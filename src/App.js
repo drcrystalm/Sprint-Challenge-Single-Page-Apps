@@ -9,7 +9,8 @@ export default function App() {
     return (
         <Router>
             <div>
-                <nav ClassName='main-nav'>
+                <Header />
+                <nav className='main-nav'>
                     <ul>
                         <li>
                             <Link to='/'>Home</Link>
