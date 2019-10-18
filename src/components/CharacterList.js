@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
+// import Header from "./components/Header.js"
 import CharacterCard from "./CharacterCard"
 import { Container } from "reactstrap"
 
@@ -14,7 +15,7 @@ export default function CharacterList(props) {
             .get(`https://jsonplaceholder.typicode.com/posts/`)
             .then(response => {
                 setChars(response.data)
-                console.log(response.data)
+                // console.log(response.data)
             })
             .catch(error => {
                 console.log("No bueno", error)
