@@ -1,4 +1,5 @@
 import React from "react"
+import Header from "./Header"
 
 export default function WelcomePage() {
     return (
@@ -11,6 +12,7 @@ export default function WelcomePage() {
                     alt='rick'
                 />
             </header>
+            <Header />
         </section>
     )
 }

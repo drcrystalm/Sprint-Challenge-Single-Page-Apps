@@ -1,9 +1,9 @@
 import React from "react"
 import WelcomePage from "./components/WelcomePage"
-import Header from "./components/Header.js"
 import CharacterList from "./components/CharacterList.js"
 import LocationsList from "./components/LocationsList"
 import { Route, Link } from "react-router-dom"
+import "bootstrap/dist/css/bootstrap.css"
 
 export default function App() {
     return (
