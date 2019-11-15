@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import CharacterCard from "./CharacterCard"
 import Header from "./Header"
-import SearchForm from "./SearchForm"
+import SearchFormDos from "./SearchFromDos"
 
 export default function CharacterList() {
     // TODO: Add useState to track data from useEffect
     const [characterList, setCharacterList] = useState([])
+    const [query, setQuery] = useState("")
 
     useEffect(() => {
         // TODO: Add API Request here - must run in `useEffect`
@@ -22,24 +23,37 @@ export default function CharacterList() {
             })
     }, [])
 
+    const handleInputChange = event => {
+        setQuery(event.target.value)
+    }
+
     return (
         <>
             <Header />
-            <SearchForm />
+            <SearchFormDos
+                handleInputChange={handleInputChange}
+                query={query}
+            />
 
             <section className='character-list'>
                 <h2>Rick and Morty Characters</h2>
-                {characterList.map(character => {
-                    return (
-                        <CharacterCard
-                            key={character.id}
-                            name={character.name}
-                            status={character.status}
-                            species={character.species}
-                            image={character.image}
-                        />
+                {characterList
+                    .filter(character =>
+                        character.name
+                            .toLowerCase()
+                            .includes(query.toLowerCase())
                     )
-                })}
+                    .map(character => {
+                        return (
+                            <CharacterCard
+                                key={character.id}
+                                name={character.name}
+                                status={character.status}
+                                species={character.species}
+                                image={character.image}
+                            />
+                        )
+                    })}
             </section>
         </>
     )
