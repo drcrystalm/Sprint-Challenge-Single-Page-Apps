@@ -8,7 +8,7 @@ export default function SearchFormDos(props) {
                 type='text'
                 onChange={props.handleInputChange}
                 title='title'
-                placeholder='search for random text'
+                placeholder='search character name'
                 autoComplete='off'
                 value={props.query}
             />
