@@ -1,16 +1,16 @@
 import React from "react"
-import { Card, CardTitle, CardText, CardSubtitle } from "reactstrap"
+import { Card, CardTitle, CardSubtitle, CardImg } from "reactstrap"
+import "./CharacterCard.css"
 
-const CharacterCard = props => {
+export default function CharacterCard(props) {
     return (
-        <Card className='card'>
-            <CardTitle> {props.user} </CardTitle>
-            <CardSubtitle>
-                This will sub for the name: {props.title}
-            </CardSubtitle>
-            <CardText>{props.body}</CardText>
-        </Card>
+        <div className='container'>
+            <Card className='characterCard'>
+                <CardImg src={props.image} alt='character' />
+                <CardTitle>{props.name}</CardTitle>
+                <CardSubtitle>{props.status}</CardSubtitle>
+                <CardSubtitle>{props.species}</CardSubtitle>
+            </Card>
+        </div>
     )
 }
-
-export default CharacterCard

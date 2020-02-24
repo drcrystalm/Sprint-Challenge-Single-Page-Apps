@@ -1,39 +1,60 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-// import Header from "./components/Header.js"
 import CharacterCard from "./CharacterCard"
-import { Container } from "reactstrap"
+import Header from "./Header"
+import SearchFormDos from "./SearchFormDos"
 
-export default function CharacterList(props) {
+export default function CharacterList() {
     // TODO: Add useState to track data from useEffect
-    const [chars, setChars] = useState([])
+    const [characterList, setCharacterList] = useState([])
+    const [query, setQuery] = useState("")
 
     useEffect(() => {
         // TODO: Add API Request here - must run in `useEffect`
         //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
         axios
-            .get(`https://jsonplaceholder.typicode.com/posts/`)
+            .get(`https://rickandmortyapi.com/api/character`)
             .then(response => {
-                setChars(response.data)
-                // console.log(response.data)
+                setCharacterList(response.data.results)
+                console.log(response.data.results)
             })
             .catch(error => {
-                console.log("No bueno", error)
+                console.log("No good, fool!", error)
             })
     }, [])
 
+    const handleInputChange = event => {
+        setQuery(event.target.value)
+    }
+
     return (
-        <Container>
-            {chars.map(char => {
-                return (
-                    <CharacterCard
-                        key={char.id}
-                        user={char.userId}
-                        body={char.body}
-                        title={char.title}
-                    />
-                )
-            })}
-        </Container>
+        <>
+            <Header />
+            <SearchFormDos
+                handleInputChange={handleInputChange}
+                query={query}
+            />
+
+            <section className='character-list'>
+                <h2>Rick and Morty Characters</h2>
+                {characterList
+                    .filter(character =>
+                        character.name
+                            .toLowerCase()
+                            .includes(query.toLowerCase())
+                    )
+                    .map(character => {
+                        return (
+                            <CharacterCard
+                                key={character.id}
+                                name={character.name}
+                                status={character.status}
+                                species={character.species}
+                                image={character.image}
+                            />
+                        )
+                    })}
+            </section>
+        </>
     )
 }
