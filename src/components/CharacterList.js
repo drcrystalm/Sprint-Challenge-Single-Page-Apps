@@ -3,6 +3,7 @@ import axios from "axios"
 import CharacterCard from "./CharacterCard"
 import Header from "./Header"
 import SearchFormDos from "./SearchFormDos"
+import "./CharacterCard.css"
 
 export default function CharacterList() {
     // TODO: Add useState to track data from useEffect
@@ -36,7 +37,7 @@ export default function CharacterList() {
             />
 
             <section className='character-list'>
-                <h2>Rick and Morty Characters</h2>
+                <h2 id='RM'>Rick and Morty Characters</h2>
                 {characterList
                     .filter(character =>
                         character.name

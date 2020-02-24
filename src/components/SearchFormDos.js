@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react"
-import axios from "axios"
+import "./CharacterCard.css"
+import { Form, FormGroup, Input } from "reactstrap"
 
 export default function SearchFormDos(props) {
     return (
-        <form className='search-form'>
-            <input
-                type='text'
-                onChange={props.handleInputChange}
-                title='title'
-                placeholder='search character name'
-                autoComplete='off'
-                value={props.query}
-            />
-        </form>
+        <Form className='search-form'>
+            <FormGroup>
+                <Input
+                    type='text'
+                    onChange={props.handleInputChange}
+                    title='title'
+                    placeholder='search character name'
+                    autoComplete='off'
+                    value={props.query}
+                />
+            </FormGroup>
+        </Form>
     )
 }

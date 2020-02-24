@@ -6,3 +6,17 @@
     padding: 20px;
     text-align: center;
 }
+
+.search-form {
+    margin: 0 auto;
+    width: 30%;
+}
+
+.centered {
+    color: violet;
+}
+
+#RM {
+    /* margin-left: 315px; */
+    margin-left: 38%;
+}
